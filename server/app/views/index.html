@@ -16,11 +16,19 @@
 </head>
 <body ng-app="FullstackGeneratedApp">
     <div ng-controller="itemsCtrl">
-        <input class="container form-control" id="filterBar" placeholder="Search by name..." ng-model="searchText.name"/>
+        <input class="container form-control" id="filterBar" placeholder="Search by name or category" ng-model="searchText"/>
         
         <div>
             <table>
-                <tr ng-repeat="x in items | filter: searchText">
+                <tr>
+                <th ng-click="sortProperty('system_id')"> System ID </th>
+                <th ng-click="sortProperty('upc')"> UPC </th>
+                <th ng-click="sortProperty('name')"> Name </th>
+                <th ng-click="sortProperty('qty')"> Qty </th>
+                <th ng-click="sortProperty('price')"> Price </th>
+                <th ng-click="sortProperty('category')"> Category </th>
+                </tr>
+                <tr ng-repeat="x in items | filter: searchText | orderBy: orderProperty">
                 <td> {{ x.system_id }} </td>
                 <td> {{ x.upc }} </td>
                 <td> {{ x.name }} </td>
