@@ -25,7 +25,7 @@
                 <th ng-click="sortProperty('upc')"> UPC </th>
                 <th ng-click="sortProperty('name')"> Name </th>
                 <th ng-click="sortProperty('qty')"> Qty </th>
-                <th ng-click="sortProperty('price')"> Price </th>
+                <th ng-click="sortProperty('price')"> Price ($) </th>
                 <th ng-click="sortProperty('category')"> Category </th>
                 </tr>
                 <tr ng-repeat="x in items | filter: searchText | orderBy: orderProperty">
