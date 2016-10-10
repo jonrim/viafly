@@ -15,37 +15,18 @@
     <script src="/main.js"></script>
 </head>
 <body ng-app="FullstackGeneratedApp">
-    <navbar></navbar>
-    <div>
-        <input class="container form-control" id="filterBar" placeholder="Filter..." ng-model="searchText"/>
-        <div ng-repeat="item in items" class="container">
-          <div class="row">
-            <div>
-              <h2>Items </h2>
-            </div>
-          </div>
-          <div class="row">
+    <div ng-controller="itemsCtrl">
+        <input class="container form-control" id="filterBar" placeholder="Search by name..." ng-model="searchText.name"/>
+        
+        <div>
             <table>
-                <tr ng-repeat="x in items">
-                <td> {{ x[0] }} </td>
-                <td> {{ x[1] }} </td>
-                <td> {{ x[2] }} </td>
-                <td> {{ x[3] }} </td>
-                <td> {{ x[4] }} </td>
-                <td> {{ x[5] }} </td>
-                </tr>
-            </table>
-          </div>
-        </div>
-        <div ng-controller="itemsCtrl">
-            <table>
-                <tr ng-repeat="x in items">
-                <td> {{ x[0] }} </td>
-                <td> {{ x[1] }} </td>
-                <td> {{ x[2] }} </td>
-                <td> {{ x[3] }} </td>
-                <td> {{ x[4] }} </td>
-                <td> {{ x[5] }} </td>
+                <tr ng-repeat="x in items | filter: searchText">
+                <td> {{ x.system_id }} </td>
+                <td> {{ x.upc }} </td>
+                <td> {{ x.name }} </td>
+                <td> {{ x.qty }} </td>
+                <td> {{ x.price }} </td>
+                <td> {{ x.category }} </td>
                 </tr>
             </table>
         </div>
