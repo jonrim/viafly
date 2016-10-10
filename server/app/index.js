@@ -30,9 +30,22 @@ module.exports = function (db) {
 
     });
 
+    var fs = require('fs');
+    var parse = require('csv-parse');
+
+    
+    app.get('/data', function (req, res) {
+        var parser = parse({delimiter: ','}, function(err, data) {
+            res.send(data);
+        });
+
+        fs.createReadStream(__dirname+'/../../store_inventory.csv').pipe(parser);
+    })
+
     app.get('/*', function (req, res) {
         res.sendFile(app.get('indexHTMLPath'));
     });
+
 
     // Error catching endware.
     app.use(function (err, req, res, next) {
